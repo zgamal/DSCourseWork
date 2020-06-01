@@ -149,7 +149,7 @@ public class Frogger extends WindowController {
     	
     	if (Frog.isAlive()) {
     		Frog.hopToward(point);
-    	} else if (point.getY() > 505) {
+    	} else if (point.getY() > 500) {
     		Frog.reincarnate();
     	}
     }
