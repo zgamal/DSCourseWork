@@ -20,7 +20,7 @@ public class Gallows {
 					"  |      \n" + 
 					"  |      \n" + 
 					"  |      \n" + 
-					"__|__      ");
+					"__|__    ");
 		} else if (s == 1) {
 			return ("\n" + 
 					"   ____  \n" + 
@@ -28,7 +28,7 @@ public class Gallows {
 					"  |    O \n" + 
 					"  |      \n" + 
 					"  |      \n" + 
-					"__|__      ");
+					"__|__    ");
 		} else if (s == 2) {
 			return ("\n" + 
 					"   ____  \n" + 
@@ -36,15 +36,15 @@ public class Gallows {
 					"  |    O \n" + 
 					"  |    | \n" + 
 					"  |      \n" + 
-					"__|__      ");
+					"__|__    ");
 		} else if (s == 3) {
 			return ("\n" + 
 					"   ____  \n" + 
 					"  |    | \n" + 
 					"  |    O \n" + 
-					"  |   \\| \n" + 
+					"  |   \\|\n" + 
 					"  |      \n" + 
-					"__|__      ");
+					"__|__    ");
 		} else if (s == 4) {
 			return ("\n" + 
 					"   ____  \n" + 
@@ -52,7 +52,7 @@ public class Gallows {
 					"  |    O \n" + 
 					"  |   \\|/\n" + 
 					"  |      \n" + 
-					"__|__      ");
+					"__|__    ");
 		} else if (s == 5) {
 			return ("\n" + 
 					"   ____  \n" + 
@@ -60,7 +60,7 @@ public class Gallows {
 					"  |    O \n" + 
 					"  |   \\|/\n" + 
 					"  |   /  \n" + 
-					"__|__      ");
+					"__|__    ");
 		} else {
 			return ("\n" + 
 					"   ____  \n" + 
@@ -68,7 +68,7 @@ public class Gallows {
 					"  |    O \n" + 
 					"  |   \\|/\n" + 
 					"  |   / \\\n" + 
-					"__|__      ");
+					"__|__    ");
 		}
 	}
 	
