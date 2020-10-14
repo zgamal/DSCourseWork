@@ -26,7 +26,6 @@ public class Extentions {
 		Scanner s = new Scanner(System.in);
 		char[] letters;
 		char mode; // stores game mode
-		WordList list;
 		String prompt = "Please enter a secret word: ";
 		if(c != null) {
 			
