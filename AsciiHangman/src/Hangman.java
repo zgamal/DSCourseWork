@@ -5,12 +5,11 @@
  *
  * 2. Subtract 1 from the sum before diving by 7 and taking the remainder. 
  * 
- * 3. A leap year means that there is February 29th. This will only affect the day of the week for dates that are after February 29th.
- * Subtracting 1 from dates after March during leap years assumes that February 29th has already occurred and thus shift the days. If 
- * the date fell before March on a leap year then February 29th hasn't occurred yet and so there's no need to shift the days.
+ * 3. A leap year means that there is February 29th. This will  affect the day of the week for dates that are after February 29th, since
+ * there is an unusual extra day that was unaccounted for. The formula is adjusted so that it accounts for that shift for days after February
+ * 29th. However, if the day is before that it hadn't yet and so we subtract 1. 
  * 
- * 4. 
- * 
+ * 4. 3 mod 7
  */
 
 import java.io.Console;
