@@ -42,7 +42,7 @@ public class Gallows {
 					"   ____  \n" + 
 					"  |    | \n" + 
 					"  |    O \n" + 
-					"  |   \\|\n" + 
+					"  |   \\| \n" + 
 					"  |      \n" + 
 					"__|__    ");
 		} else if (s == 4) {

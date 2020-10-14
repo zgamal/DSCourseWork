@@ -31,7 +31,7 @@ public class Extentions {
 		if(c != null) {
 			
 			// Asks for game mode 
-			System.out.print("Please enter game mode. 0 for computer player, 1 for single player, and 2 for multiplayer: ");
+			System.out.print("Please enter game mode. 0 for computer player, 1 for human opponent: ");
 			mode = s.nextLine().charAt(0);
 			
 			letters = c.readPassword(prompt);
@@ -41,7 +41,7 @@ public class Extentions {
 		} else {
 			
 			// asks for game mode
-			System.out.print("Please enter game mode. 0 for computer player, 1 for single player, and 2 for multiplayer: ");
+			System.out.print("Please enter game mode. 0 for computer opponent, 1 for human opponent: ");
 			mode = s.nextLine().charAt(0);
 			
 			System.out.println("For best results, please run this from the command line.");
@@ -114,7 +114,11 @@ public class Extentions {
 		if (solved < letters.length) {
 			System.out.println("Game over! Player 1 wins!");
 		} else {
-			System.out.println("Success!  Player 2 wins!");
+			if (mode == 0) {
+				System.out.println("Success!  Comuter Wins!");
+			} else {
+				System.out.println("Success!  Player 2 wins!");
+			}
 		}
 	} 	
 }
