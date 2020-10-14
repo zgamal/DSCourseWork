@@ -1,8 +1,20 @@
 /* 
  * THOUGHT QUESTIONS
+ *
+ * 1. True
+ *
+ * 2. Subtract 1 from the sum before diving by 7 and taking the remainder. 
+ * 
+ * 3. A leap year means that there is February 29th. This will only affect the day of the week for dates that are after February 29th.
+ * Subtracting 1 from dates after March during leap years assumes that February 29th has already occurred and thus shift the days. If 
+ * the date fell before March on a leap year then February 29th hasn't occurred yet and so there's no need to shift the days.
+ * 
+ * 4. 
+ * 
  */
 
 import java.io.Console;
+import java.util.Arrays; 
 import java.util.Scanner;
 
 public class Hangman {
@@ -10,6 +22,7 @@ public class Hangman {
 	public static void main(String[] args) {
 		
 		// Scanner stuff
+		
 		System.out.println("Welcome to the ASCII Version of Hangman!");
 		Console c = System.console();
 		Scanner s = new Scanner(System.in);
