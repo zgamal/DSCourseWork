@@ -18,7 +18,7 @@
  *    WindowConroller's canvas. It has the parameter of the point where the mouse leaves. A program where it might make sense to use this method is, for example, one that requires 
  *    the user to have the mouse in the canvas at all times, and so it would be useful to know if the user's mouse exits to notify him to get it back in. 
  *    
- * 2. objectDraw.rect implements a resizable, 2d, drawable rectangle object. It's purpose is to draw a rectangle based on given inputs. The reason FramedOval extends it is that 
+ * 2. objectDraw.rect is an abstract class that implements a resizable, 2d, drawable rectangle object. It's purpose is to draw a rectangle based on given inputs. The reason FramedOval extends it is that 
  * 	  it contains the most basic features and funcionality necessary to print a resizable, 2d, drawable rectangle object. Some of this functionality might be necssary for implements 
  *    FramedOval and thus the abstraction makes sense. 
  *    
