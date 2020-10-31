@@ -1,6 +1,13 @@
 /*
  * THOUGHT QUESTIONS
  * 
+ * 3.4. The method setSize(int newSize) is used to explicitly set the size of the Vector. If newSize given is smaller, then the current
+ *    size of the Vector then all leftover components at and after newSize index are removed, and if newSize is larger, then new null 
+ *    componenets are added at the end of the Vector to reach newSize. This is useful because it allows the user easily to limit the 
+ *    size of the Vector to a certain int and discard all leftover components. It is also useful if the user's intention is to add a 
+ *    certain number of null components at the end of the Vector.
+ *    
+ * 3.6.  
  * 
  */
 
