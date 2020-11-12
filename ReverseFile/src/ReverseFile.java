@@ -5,9 +5,12 @@
  *    size of the Vector then all leftover components at and after newSize index are removed, and if newSize is larger, then new null 
  *    componenets are added at the end of the Vector to reach newSize. This is useful because it allows the user easily to limit the 
  *    size of the Vector to a certain int and discard all leftover components. It is also useful if the user's intention is to add a 
- *    certain number of null components at the end of the Vector.
+ *    certain number of null components at the end of the Vector. Without using the setSize method, it is possible to adjust the size of 
+ *    the Vector by adding/removing null elements to it.
  *    
- * 3.6.  
+ * 3.6. BitVector.java
+ * 
+ * 3.8. 
  * 
  */
 
