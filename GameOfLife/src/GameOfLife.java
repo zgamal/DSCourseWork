@@ -1,7 +1,20 @@
 /*
  * THOUGHT QUESTIONS
  * 
- * 1. 
+ * 1. Pressing the key g leads eventually to a configuration of cells with limitless number of cells. The glider gun emits cells at a
+ *    constant rate and infitely. This is very interesting because it proves that in cellular automtata it is possible to have 
+ *    configurations with limitless numbers of cells from an intital pattern with finite numbers of cells. 
+ *    
+ * 3. One of the cons is that this will likely increase the amount of code you have to write, since the array grid will have to be initalized/
+ *    constructed again in the grid class in order for its functionality to work properly. A possible pro is that it guarentees that the grid/
+ *    borders 2D arrsu are initialized and defined and ready to use.
+ * 
+ * 2. The cells change concurrently which means that the next generation version of each cell is calculated and updates for all cells
+ *    at the same time. Since the array that holds the status of all those cells is predetermined and its size is predetrmined based on 
+ *    the board's size, the amount of memory that we need to play the game is fixed throughout. 
+ *    
+ * 4. I would start with a fixed size version of the board and then as the board expands, and new cells are born beyond the initial dimensions
+ *    of the board, new rows/columns of cells are created to host those new cells.
  * 
  */
 
