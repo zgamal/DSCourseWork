@@ -140,10 +140,4 @@ public class Species {
 	}
 	
 
-
-	public static void main(String[] args) {
-		Species species = new Species("Creatures/Hop.txt");
-		System.out.println(species.programStep(2));
-	}
-
 }
