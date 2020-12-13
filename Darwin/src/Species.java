@@ -38,7 +38,7 @@ public class Species {
 	 * @param fileName the name of the file containing the data for the species
 	 * @pre fileName exists in the Creature subdirectory.
 	 */
-	public Species(String fileName) {
+	public Species(String fileName) {	
 		try {
 		      File f = new File(fileName);
 		      Scanner s = new Scanner(f);
@@ -144,5 +144,10 @@ public class Species {
 	public String programToString() {
 		return sprogram.toString();
 	}
+
+	public static void main(String[] args) {
+		Species species = new Species("Creatures/Food.txt");
+	}
+
 
 }
