@@ -30,8 +30,6 @@ public class Species {
 	
 	ArrayList<Instruction> program = new ArrayList<Instruction>();
 	ArrayList<String> sprogram = new ArrayList<String>();
-	String name;
-	String color;
 	
 	/**
 	 * Create a species for the given file. 
@@ -40,22 +38,14 @@ public class Species {
 	 */
 	public Species(String fileName) {	
 		try {
-		      File f = new File(fileName);
-		      Scanner s = new Scanner(f);
-		      int index = 0;
-		      while (s.hasNextLine()) {
-		    	sprogram.add(s.nextLine());
-		        if (index == 0) {
-		        	String l = s.nextLine();
-		        	name = l;
-		        	index++;
-		        } else if (index == 1) {
-		        	String l = s.nextLine();
-		        	color = l;
-		        	index++;
-		        } else {
-		        	String l = s.nextLine();
-		        	if (l.contains("hop")) {
+			File f = new File(fileName);
+		    Scanner s = new Scanner(f);
+		    while (s.hasNextLine()) {
+		    	String l = s.nextLine(); 
+		    	sprogram.add(l);
+		    		if (l.isEmpty()) {
+		    			break;
+		    		} else if (l.contains("hop")) {
 		        		Instruction instruction = new Instruction(Instruction.HOP, 0);
 		        		program.add(instruction);
 		        	} else if (l.contains("left")) {
@@ -69,37 +59,35 @@ public class Species {
 		        		program.add(instruction);
 		        	} else if (l.contains("ifempty")) {
 		        		String[] line = l.split(" ");
-		        		int address = (int) Integer.parseInt(line[1]);
+		        		int address = Integer.parseInt(line[1]);
 		        		Instruction instruction = new Instruction(Instruction.IFEMPTY, address);
 		        		program.add(instruction);
 		        	} else if (l.contains("ifwall")) {
 		        		String[] line = l.split(" ");
-		        		int address = (int) Integer.parseInt(line[1]);
+		        		int address = Integer.parseInt(line[1]);
 		        		Instruction instruction = new Instruction(Instruction.IFWALL, address);
 		        		program.add(instruction);
 		        	} else if (l.contains("ifsame")) {
 		        		String[] line = l.split(" ");
-		        		int address = (int) Integer.parseInt(line[1]);
+		        		int address = Integer.parseInt(line[1]);
 		        		Instruction instruction = new Instruction(Instruction.IFSAME, address);
 		        		program.add(instruction);
 		        	} else if (l.contains("ifenemy")) {
 		        		String[] line = l.split(" ");
-		        		int address = (int) Integer.parseInt(line[1]);
+		        		int address = Integer.parseInt(line[1]);
 		        		Instruction instruction = new Instruction(Instruction.IFENEMY, address);
 		        		program.add(instruction);
 		        	} else if (l.contains("ifrandom")) {
 		        		String[] line = l.split(" ");
-		        		int address = (int) Integer.parseInt(line[1]);
+		        		int address = Integer.parseInt(line[1]);
 		        		Instruction instruction = new Instruction(Instruction.IFRANDOM, address);
 		        		program.add(instruction);
 		        	} else if (l.contains("go")) {
 		        		String[] line = l.split(" ");
-		        		int address = (int) Integer.parseInt(line[1]);
+		        		int address = Integer.parseInt(line[1]);
 		        		Instruction instruction = new Instruction(Instruction.GO, address);
 		        		program.add(instruction);
 		        	} 
-		        }
-		        
 		      }
 		      s.close();
 		    } catch (FileNotFoundException e) {
@@ -112,14 +100,14 @@ public class Species {
 	 * Return the name of the species.
 	 */
 	public String getName() {
-		return name;
+		return sprogram.get(0);
 	}
 
 	/**
 	 * Return the color of the species.
 	 */
 	public String getColor() {
-		return color;
+		return sprogram.get(1);
 	}
 
 	/**
@@ -128,26 +116,34 @@ public class Species {
 	public int programSize() {
 		return program.size();
 	}
+	
 
-	/**
+	/**	
 	 * Return an instruction from the program. 
 	 * @pre 1 <= i <= programSize().
 	 * @post returns instruction i of the program.
 	 */
 	public Instruction programStep(int i) {
-		return program.get(i);
+		return program.get(i-1);
 	}
+	
 
 	/**
 	 * Return a String representation of the program.
 	 */
 	public String programToString() {
-		return sprogram.toString();
+		String program = "";
+		for (int i = 0; i < sprogram.size(); i++) {
+			program += (sprogram.get(i) + "\n");
+		}
+		return program;
 	}
+	
+
 
 	public static void main(String[] args) {
-		Species species = new Species("Creatures/Food.txt");
+		Species species = new Species("Creatures/Hop.txt");
+		System.out.println(species.programStep(2));
 	}
-
 
 }

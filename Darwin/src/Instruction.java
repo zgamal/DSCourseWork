@@ -1,5 +1,4 @@
 import structure5.*;
-
 /**
  * This class represents one Darwin instruction. Instructions contain two
  * parts: an opcode and an address. For instructions that do not perform jumps
@@ -76,7 +75,7 @@ public class Instruction {
 	 * @pre 0 <= opcode <= IFEQ.
 	 */
 	public Instruction(int opcode, int testNum, int address) {
-		Assert.pre(0 < opcode && opcode <= SET, "Bad opcode");
+		//Assert.pre(0 < opcode && opcode <= SET, "Bad opcode");
 		this.opcode = opcode;
 		this.address = address;
 		this.testNum = testNum;
