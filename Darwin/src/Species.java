@@ -3,7 +3,6 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 /**
  * The individual creatures in the world are all representatives of some
  * species class and share certain common characteristics, such as the species
@@ -30,6 +29,7 @@ public class Species {
 	
 	ArrayList<Instruction> program = new ArrayList<Instruction>();
 	ArrayList<String> sprogram = new ArrayList<String>();
+	String name;
 	
 	/**
 	 * Create a species for the given file. 
@@ -38,63 +38,58 @@ public class Species {
 	 */
 	public Species(String fileName) {	
 		try {
-			File f = new File(fileName);
+			File f = new File("Creatures/" + fileName);
 		    Scanner s = new Scanner(f);
 		    while (s.hasNextLine()) {
-		    	String l = s.nextLine(); 
-		    	sprogram.add(l);
-		    		if (l.isEmpty()) {
-		    			break;
-		    		} else if (l.contains("hop")) {
-		        		Instruction instruction = new Instruction(Instruction.HOP, 0);
-		        		program.add(instruction);
-		        	} else if (l.contains("left")) {
-		        		Instruction instruction = new Instruction(Instruction.LEFT, 0);
-		        		program.add(instruction);
-		        	} else if (l.contains("right")) {
-		        		Instruction instruction = new Instruction(Instruction.RIGHT, 0);
-		        		program.add(instruction);
-		        	} else if (l.contains("infect")) {
-		        		Instruction instruction = new Instruction(Instruction.INFECT, 0);
-		        		program.add(instruction);
-		        	} else if (l.contains("ifempty")) {
-		        		String[] line = l.split(" ");
-		        		int address = Integer.parseInt(line[1]);
-		        		Instruction instruction = new Instruction(Instruction.IFEMPTY, address);
-		        		program.add(instruction);
-		        	} else if (l.contains("ifwall")) {
-		        		String[] line = l.split(" ");
-		        		int address = Integer.parseInt(line[1]);
-		        		Instruction instruction = new Instruction(Instruction.IFWALL, address);
-		        		program.add(instruction);
-		        	} else if (l.contains("ifsame")) {
-		        		String[] line = l.split(" ");
-		        		int address = Integer.parseInt(line[1]);
-		        		Instruction instruction = new Instruction(Instruction.IFSAME, address);
-		        		program.add(instruction);
-		        	} else if (l.contains("ifenemy")) {
-		        		String[] line = l.split(" ");
-		        		int address = Integer.parseInt(line[1]);
-		        		Instruction instruction = new Instruction(Instruction.IFENEMY, address);
-		        		program.add(instruction);
-		        	} else if (l.contains("ifrandom")) {
-		        		String[] line = l.split(" ");
-		        		int address = Integer.parseInt(line[1]);
-		        		Instruction instruction = new Instruction(Instruction.IFRANDOM, address);
-		        		program.add(instruction);
-		        	} else if (l.contains("go")) {
-		        		String[] line = l.split(" ");
-		        		int address = Integer.parseInt(line[1]);
-		        		Instruction instruction = new Instruction(Instruction.GO, address);
-		        		program.add(instruction);
-		        	} 
-		      }
-		      s.close();
-		    } catch (FileNotFoundException e) {
-		      System.out.println("An error occurred.");
-		      e.printStackTrace();
+		    	String line = s.nextLine(); 
+		    	sprogram.add(line);
+		    	String[] words = line.split(" ");
+	    		if (line.isEmpty()) {
+	    			break;
+	    		} else if (words[0].equals("hop")) {
+	        		Instruction instruction = new Instruction(Instruction.HOP, 0);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("left")) {
+	        		Instruction instruction = new Instruction(Instruction.LEFT, 0);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("right")) {
+	        		Instruction instruction = new Instruction(Instruction.RIGHT, 0);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("infect")) {
+	        		Instruction instruction = new Instruction(Instruction.INFECT, 0);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifempty")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFEMPTY, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifwall")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFWALL, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifsame")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFSAME, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifenemy")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFENEMY, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifrandom")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFRANDOM, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("go")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.GO, address);
+	        		program.add(instruction);
+	        	} 
 		    }
-	}
+		    s.close();
+		} catch (FileNotFoundException e) {
+		    	System.out.println("An error occurred.");
+		    	e.printStackTrace();
+		}
+	}    
 	
 	/**
 	 * Return the name of the species.
@@ -111,12 +106,11 @@ public class Species {
 	}
 
 	/**
-	 * Return the number of instructions in the program.
+  	 * Return the number of instructions in the program.
 	 */
 	public int programSize() {
 		return program.size();
 	}
-	
 
 	/**	
 	 * Return an instruction from the program. 
@@ -127,7 +121,6 @@ public class Species {
 		return program.get(i-1);
 	}
 	
-
 	/**
 	 * Return a String representation of the program.
 	 */
@@ -139,5 +132,13 @@ public class Species {
 		return program;
 	}
 	
+	public static void main(String[] args) {
+		Species species = new Species("Rover.txt");
+		assert species.getName().equals("Rover") : "getName error";
+		assert species.getColor().equals("red") : "getColor error";
+		assert species.programSize() == 12 : "programSize error";
+		assert species.programStep(1).toString().equals("ifenemy 11") : "programStep error";
+		assert species.programStep(species.programSize()).toString().equals("go 1") : "programStep error";
+	}
 
 }

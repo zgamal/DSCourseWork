@@ -1,4 +1,5 @@
 import structure5.*;
+
 /**
  * This class represents one Darwin instruction. Instructions contain two
  * parts: an opcode and an address. For instructions that do not perform jumps
@@ -20,6 +21,7 @@ ifempty, ifwall, ifsame, ifenemy, ifrandom, go</pre>
  * 
  *  
  */
+
 public class Instruction {
 
 	/** opcode for the hop instruction */
@@ -60,14 +62,13 @@ public class Instruction {
 	protected int testNum; 
 
 	/**
-	* Creates a new instruction. address is the target of the operation, if one
+	 * Creates a new instruction. address is the target of the operation, if one
 	 * is needed. Otherwise it is not used. @pre 0 <= opcode <= SET.
 	 */
 	public Instruction(int opcode, int address) {
 		this(opcode, 0, address);
 	}
 		
-	
 	/**
 	 * Creates a new instruction. address is the target of the operation, if one
 	 * is needed. Otherwise it is not used. Also includes support for "smart"
@@ -75,7 +76,7 @@ public class Instruction {
 	 * @pre 0 <= opcode <= IFEQ.
 	 */
 	public Instruction(int opcode, int testNum, int address) {
-		//Assert.pre(0 < opcode && opcode <= SET, "Bad opcode");
+		Assert.pre(0 < opcode && opcode <= SET, "Bad opcode");
 		this.opcode = opcode;
 		this.address = address;
 		this.testNum = testNum;
@@ -103,7 +104,7 @@ public class Instruction {
 	}
 	
 	/**
-	 * Returns a printable representation of an Instruction
+  	 * Returns a printable representation of an Instruction
 	 */
 	public String toString() {
 		switch (opcode) {
@@ -141,4 +142,5 @@ public class Instruction {
 				return "BAD INSTRUCTION: " + opcode + " " + address;
 		}
 	}
+
 }

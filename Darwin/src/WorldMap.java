@@ -14,6 +14,7 @@ import structure5.*;
  * 
  * Only the Creature code should need to call the displaySquare method.
  */
+
 public class WorldMap {
 
 	/**
@@ -23,7 +24,7 @@ public class WorldMap {
 	static protected WorldMapImpl map = null;
 
 	/**
-	 * Initialize the world map to have size (x,y) and create the Window for it.
+ 	 * Initialize the world map to have size (x,y) and create the Window for it.
 	 * This must be called once and only once.
 	 */
 	static public void createWorldMap(int x, int y) {
@@ -78,7 +79,7 @@ public class WorldMap {
 	 ***************************************************************************/
 
 	/**
-	 * Inner class for the panel so that everything is encapsulated in the
+   	 * Inner class for the panel so that everything is encapsulated in the
 	 * WorldMap class and not visible outside.
 	 */
 	static class WorldMapImpl extends JPanel {

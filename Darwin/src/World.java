@@ -11,7 +11,7 @@
 
 public class World<E> {
 	
-	Object[][] World;
+	Object[][] world;
 	int height;
 	int width;
 	
@@ -25,7 +25,7 @@ public class World<E> {
 	 * @pre h > 0
 	 */
 	public World(int h, int w)  {
-		World = new Object[h][w];
+		world = new Object[h][w];
 		height = h;
 		width = w;
 	}
@@ -61,7 +61,7 @@ public class World<E> {
 	 * @pre pos is a non-null position on the board.
 	 */
 	public void set(Position pos, E c) {
-		World[pos.getY()][pos.getX()] = c;
+		world[pos.getY()][pos.getX()] = c;
 	}
 
 	/**
@@ -69,7 +69,18 @@ public class World<E> {
 	 * @pre pos is a non-null position on the board.
 	 */
 	public E get(Position pos) {
-		return (E) World[pos.getY()][pos.getX()];
+		return (E) world[pos.getY()][pos.getX()];
+	}
+	
+	public static void main(String[] args) {
+		World world = new World(10, 10);
+		assert world.height() == 10 : "Height error";
+		assert world.width() == 10 : "Width error";
+		assert world.inRange(new Position(5,5)) : "inRange error";
+		assert !world.inRange(new Position(11,11)) : "inRange error";
+		Object c = new Object();
+		world.set(new Position(5,5), c);
+		assert world.get(new Position(5,5)) == c : "set/get error";
 	}
 
 }

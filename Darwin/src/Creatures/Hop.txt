@@ -1,6 +1,7 @@
 Hop
 blue
 hop
+infect
 go 1
 
 

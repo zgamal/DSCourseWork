@@ -4,6 +4,7 @@ import structure5.*;
  * A Position is an (x,y) coordinate in the World, much like the Positions for
  * the maze program.
  */
+
 public class Position {
 
 	/** The North compass point. */
@@ -36,7 +37,7 @@ public class Position {
 	}
 
 	/**
-	 * Return the y coordinate for the position.
+ 	 * Return the y coordinate for the position.
 	 */
 	public int getY() {
 		return y;
@@ -66,4 +67,5 @@ public class Position {
 		}
 		return null;
 	}
+
 }
