@@ -11,9 +11,9 @@
 
 public class World<E> {
 	
-	Object[][] world;
-	int height;
-	int width;
+	private Object[][] world;
+	private int height;
+	private int width;
 	
 	/**
 	 * This function creates a new world consisting of width 
@@ -47,8 +47,7 @@ public class World<E> {
 	/**
 	 * Returns whether pos is in the world or not. 
 	 * @pre pos is a non-null position. 
-	 * @post returns true if pos is an (x,y) location in the bounds of
-	 *       the board.
+	 * @post returns true if pos is an (x,y) location in the bounds of the board.
 	 */
 	boolean inRange(Position pos)  {
 		return (pos.getY() >= 0 && pos.getY() < height && pos.getX() >= 0 && pos.getX() < width);
@@ -76,11 +75,14 @@ public class World<E> {
 		World world = new World(10, 10);
 		assert world.height() == 10 : "Height error";
 		assert world.width() == 10 : "Width error";
-		assert world.inRange(new Position(5,5)) : "inRange error";
-		assert !world.inRange(new Position(11,11)) : "inRange error";
+		assert world.inRange(new Position(5, 9)) : "inRange edge error";
+		assert world.inRange(new Position(9, 5)) : "inRange edge error";
+		assert world.inRange(new Position(5, 5)) : "inRange error";
+		assert !world.inRange(new Position(11, 11)) : "inRange error";
 		Object c = new Object();
 		world.set(new Position(5,5), c);
 		assert world.get(new Position(5,5)) == c : "set/get error";
+		
 	}
 
 }

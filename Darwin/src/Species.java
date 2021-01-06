@@ -27,9 +27,9 @@ import java.util.Scanner;
 
 public class Species {
 	
-	ArrayList<Instruction> program = new ArrayList<Instruction>();
-	ArrayList<String> sprogram = new ArrayList<String>();
-	String name;
+	private ArrayList<Instruction> program = new ArrayList<Instruction>();
+	private ArrayList<String> sprogram = new ArrayList<String>();
+	private String name;
 	
 	/**
 	 * Create a species for the given file. 
@@ -56,7 +56,11 @@ public class Species {
 	        		Instruction instruction = new Instruction(Instruction.RIGHT, 0);
 	        		program.add(instruction);
 	        	} else if (words[0].equals("infect")) {
-	        		Instruction instruction = new Instruction(Instruction.INFECT, 0);
+	        		int address = 0;
+	        		if (words.length > 1) {
+		        		address = Integer.parseInt(words[1]);
+	        		} 
+	        		Instruction instruction = new Instruction(Instruction.INFECT, address);
 	        		program.add(instruction);
 	        	} else if (words[0].equals("ifempty")) {
 	        		int address = Integer.parseInt(words[1]);
@@ -74,11 +78,30 @@ public class Species {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.IFENEMY, address);
 	        		program.add(instruction);
+	        	} else if (words[0].equals("if2enemy")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFTWOENEMY, address);
+	        		program.add(instruction);
 	        	} else if (words[0].equals("ifrandom")) {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.IFRANDOM, address);
 	        		program.add(instruction);
-	        	} else if (words[0].equals("go")) {
+	        	} else if (words[0].equals("set")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.SET, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("inc")) {
+		        	Instruction instruction = new Instruction(Instruction.INC, 0);
+		        	program.add(instruction);
+	        	} else if (words[0].equals("dec")) {
+	        		Instruction instruction = new Instruction(Instruction.DEC, 0);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifeq")) {
+	        		int number = Integer.parseInt(words[1]);
+	        		int address = Integer.parseInt(words[2]);
+	        		Instruction instruction = new Instruction(Instruction.IFEQ, number, address);
+	        		program.add(instruction);
+		        } else if (words[0].equals("go")) {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.GO, address);
 	        		program.add(instruction);

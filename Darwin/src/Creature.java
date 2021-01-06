@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -37,12 +38,13 @@ public class Creature {
 	 * @post displays the creature on the world map
 	 */
 
-	Species species;
-	World<Creature> world;
-	Position pos;
-	int dir;
-	char c;
-	int step;
+	private Species species;
+	private World<Creature> world;
+	private Position pos;
+	private int dir;
+	private char c;
+	private int step;
+	private int m;
 
 	public Creature(Species species, World<Creature> world, Position pos, int dir) {
 		this.species = species;
@@ -127,11 +129,44 @@ public class Creature {
                     if (world.inRange(pos.getAdjacent(dir)) && world.get(pos.getAdjacent(dir)) != null && world.get(pos.getAdjacent(dir)).species() != species) {
                         world.get(pos.getAdjacent(dir)).invaded(species);
                         WorldMap.displaySquare(pos.getAdjacent(dir), c, world.get(pos.getAdjacent(dir)).direction(), species.getColor());
-                    } 
+                        if (species.programStep(step).getAddress() == 0) {
+                        	step = 1;
+                        } else {
+                        	step = species.programStep(step).getAddress();
+                        }
+                    } else {
+                    	step++;
+                    }
                     done = true;
-                    step++;
                     break;
+                
+				case Instruction.IFTWOENEMY : 
+					if (world.inRange(pos.getAdjacent(dir).getAdjacent(dir)) && world.get(pos.getAdjacent(dir).getAdjacent(dir)) != null && world.get(pos.getAdjacent(dir).getAdjacent(dir)).species() != species) {
+						step = species.programStep(step).getAddress();
+					} else step++;
+					break;
+					
+				case Instruction.SET :
+					m = species.programStep(step).getAddress();
+					step++;
+					break;
+					
+				case Instruction.INC :
+					m++;
+					step++;
+					break;
+				
+				case Instruction.DEC :
+					m--;
+					step++;
+					break;
 	
+				case Instruction.IFEQ :
+					if (species.programStep(step).getTestCase() == m) {
+						step = species.programStep(step).getAddress();
+					} else step++;
+					break;
+					
 				case Instruction.IFEMPTY :
 					if (world.inRange(pos.getAdjacent(dir)) && world.get(pos.getAdjacent(dir)) == null) {
 						step = species.programStep(step).getAddress();
@@ -167,6 +202,10 @@ public class Creature {
 					break;
 			}
 		}
+	}
+
+	public static void main(String s[]) {
+		// tests done visually on the grid instruction by instruction
 	}
 
 }	
