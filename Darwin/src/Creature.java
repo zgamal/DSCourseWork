@@ -179,6 +179,36 @@ public class Creature {
                     done = true;
                     break;
                 
+				case Instruction.INFECTLEFT :
+                    if (world.inRange(left) && world.get(left) != null && world.get(left).species() != species) {
+                        world.get(left).invaded(species);
+                        WorldMap.displaySquare(left, c, world.get(left).direction(), species.getColor());
+                        if (species.programStep(step).getAddress() == 0) {
+                        	step = 1;
+                        } else {
+                        	step = species.programStep(step).getAddress();
+                        }
+                    } else {
+                    	step++;
+                    }
+                    done = true;
+                    break;
+                
+				case Instruction.INFECTRIGHT :
+                    if (world.inRange(right) && world.get(right) != null && world.get(right).species() != species) {
+                        world.get(right).invaded(species);
+                        WorldMap.displaySquare(right, c, world.get(right).direction(), species.getColor());
+                        if (species.programStep(step).getAddress() == 0) {
+                        	step = 1;
+                        } else {
+                        	step = species.programStep(step).getAddress();
+                        }
+                    } else {
+                    	step++;
+                    }
+                    done = true;
+                    break;
+                
 				case Instruction.IFTWOENEMY : 
 					if (world.inRange(adj.getAdjacent(dir)) && world.get(adj.getAdjacent(dir)) != null && world.get(adj.getAdjacent(dir)).species() != species) {
 						step = species.programStep(step).getAddress();

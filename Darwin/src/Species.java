@@ -68,6 +68,20 @@ public class Species {
 	        		} 
 	        		Instruction instruction = new Instruction(Instruction.INFECT, address);
 	        		program.add(instruction);
+	        	} else if (words[0].equals("infectleft")) {
+	        		int address = 0;
+	        		if (words.length > 1) {
+		        		address = Integer.parseInt(words[1]);
+	        		} 
+	        		Instruction instruction = new Instruction(Instruction.INFECTLEFT, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("infectright")) {
+	        		int address = 0;
+	        		if (words.length > 1) {
+		        		address = Integer.parseInt(words[1]);
+	        		} 
+	        		Instruction instruction = new Instruction(Instruction.INFECTRIGHT, address);
+	        		program.add(instruction);
 	        	} else if (words[0].equals("ifempty")) {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.IFEMPTY, address);

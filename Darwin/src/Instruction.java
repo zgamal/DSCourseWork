@@ -66,6 +66,10 @@ public class Instruction {
 	public static final int HOPLEFT = 20;
 	/** opcode for hopright **/
 	public static final int HOPRIGHT = 21;
+	/** opcode for infectleft **/
+	public static final int INFECTLEFT = 22;
+	/** opcode for infectright **/
+	public static final int INFECTRIGHT = 23;
 	
 	protected int opcode; /** the opcode */
 	protected int address; /** the address */
