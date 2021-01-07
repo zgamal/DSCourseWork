@@ -70,6 +70,10 @@ public class Instruction {
 	public static final int INFECTLEFT = 22;
 	/** opcode for infectright **/
 	public static final int INFECTRIGHT = 23;
+	/** opcode for ifsameleft **/
+	public static final int IFSAMERIGHT = 24;
+	/** opcode for ifsameright **/
+	public static final int IFSAMELEFT = 25;
 	
 	protected int opcode; /** the opcode */
 	protected int address; /** the address */

@@ -266,6 +266,18 @@ public class Creature {
 						step = species.programStep(step).getAddress();
 					} else step++;
 					break;
+					
+				case Instruction.IFSAMELEFT :
+					if (world.inRange(left) && world.get(left) != null && world.get(left).species() == species) {
+						step = species.programStep(step).getAddress();
+					} else step++;
+					break;
+				
+				case Instruction.IFSAMERIGHT :
+					if (world.inRange(right) && world.get(right) != null && world.get(right).species() == species) {
+						step = species.programStep(step).getAddress();
+					} else step++;
+					break;
 	
 				case Instruction.IFENEMY :
 					if (world.inRange(adj) && world.get(adj) != null && world.get(adj).species() != species) {

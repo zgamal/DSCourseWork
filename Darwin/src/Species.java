@@ -94,6 +94,14 @@ public class Species {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.IFSAME, address);
 	        		program.add(instruction);
+	        	} else if (words[0].equals("ifsameleft")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFSAMELEFT, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifsameright")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFSAMERIGHT, address);
+	        		program.add(instruction);
 	        	} else if (words[0].equals("ifenemy")) {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.IFENEMY, address);
