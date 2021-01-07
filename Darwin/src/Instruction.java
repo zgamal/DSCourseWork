@@ -53,8 +53,20 @@ public class Instruction {
 	/** opcode to decrement memory **/
 	public static final int DEC = 14;
 	/** opcode for set **/
-	public static final int SET=15;
-
+	public static final int SET = 15;
+	/** opcode for ifenemyleft **/
+	public static final int IFENEMYLEFT = 16;
+	/** opcode for ifenemyright **/
+	public static final int IFENEMYRIGHT = 17;
+	/** opcode for ifmemeq **/
+	public static final int IFMEMEQ = 18;
+	/** opcode for copymem **/
+	public static final int COPYMEM = 19;
+	/** opcode for hopleft **/
+	public static final int HOPLEFT = 20;
+	/** opcode for hopright **/
+	public static final int HOPRIGHT = 21;
+	
 	protected int opcode; /** the opcode */
 	protected int address; /** the address */
 	

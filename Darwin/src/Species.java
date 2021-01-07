@@ -49,6 +49,12 @@ public class Species {
 	    		} else if (words[0].equals("hop")) {
 	        		Instruction instruction = new Instruction(Instruction.HOP, 0);
 	        		program.add(instruction);
+	    		} else if (words[0].equals("hopleft")) {
+	        		Instruction instruction = new Instruction(Instruction.HOPLEFT, 0);
+	        		program.add(instruction);
+	    		} else if (words[0].equals("hopright")) {
+	        		Instruction instruction = new Instruction(Instruction.HOPRIGHT, 0);
+	        		program.add(instruction);
 	        	} else if (words[0].equals("left")) {
 	        		Instruction instruction = new Instruction(Instruction.LEFT, 0);
 	        		program.add(instruction);
@@ -82,6 +88,14 @@ public class Species {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.IFTWOENEMY, address);
 	        		program.add(instruction);
+	        	} else if (words[0].equals("ifenemyleft")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFENEMYLEFT, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifenemyright")) {
+	        		int address = Integer.parseInt(words[1]);
+	        		Instruction instruction = new Instruction(Instruction.IFENEMYRIGHT, address);
+	        		program.add(instruction);
 	        	} else if (words[0].equals("ifrandom")) {
 	        		int address = Integer.parseInt(words[1]);
 	        		Instruction instruction = new Instruction(Instruction.IFRANDOM, address);
@@ -100,6 +114,14 @@ public class Species {
 	        		int number = Integer.parseInt(words[1]);
 	        		int address = Integer.parseInt(words[2]);
 	        		Instruction instruction = new Instruction(Instruction.IFEQ, number, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("ifmemeq")) {
+	        		int number = Integer.parseInt(words[1]);
+	        		int address = Integer.parseInt(words[2]);
+	        		Instruction instruction = new Instruction(Instruction.IFMEMEQ, number, address);
+	        		program.add(instruction);
+	        	} else if (words[0].equals("copymem")) {
+	        		Instruction instruction = new Instruction(Instruction.COPYMEM, 0);
 	        		program.add(instruction);
 		        } else if (words[0].equals("go")) {
 	        		int address = Integer.parseInt(words[1]);
