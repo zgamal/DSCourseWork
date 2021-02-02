@@ -164,7 +164,8 @@ public class Scribbler extends WindowController implements ActionListener {
 		if (chosenAction == DRAWING) {
 			// add new line segment to current scribble
 			Line newSegment = new Line(lastPoint, point, canvas);
-			// change color of scribbled line to color selcted by user. Black is the default color.
+			// change color of scribbled line to color selcted by user. Black is the default color. This allows the users to scribble in different
+			// colors rather than recoloring after drawing.
 			switch (chooseColor.getSelectedItem().toString()) {
 				case "red":
 					newSegment.setColor(Color.RED);
