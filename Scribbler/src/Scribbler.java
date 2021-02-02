@@ -76,10 +76,12 @@ public class Scribbler extends WindowController implements ActionListener {
 		buttonPanel.add(setColor);
 		
 		chooseColor = new JComboBox();
-		chooseColor.addItem("red");
+		chooseColor.addItem("black");
 		chooseColor.addItem("blue");
 		chooseColor.addItem("green");
 		chooseColor.addItem("yellow");
+		chooseColor.addItem("red");
+
 		
 		
 		JPanel choicePanel = new JPanel();
@@ -143,6 +145,10 @@ public class Scribbler extends WindowController implements ActionListener {
 					case "yellow":	
 						currentScribble.setColor(Color.YELLOW);
 						break;
+						
+					case "black":
+						currentScribble.setColor(Color.BLACK);
+						break;
 				}
 				break;	
 		}
@@ -158,6 +164,28 @@ public class Scribbler extends WindowController implements ActionListener {
 		if (chosenAction == DRAWING) {
 			// add new line segment to current scribble
 			Line newSegment = new Line(lastPoint, point, canvas);
+			// change color of scribbled line to color selcted by user. Black is the default color.
+			switch (chooseColor.getSelectedItem().toString()) {
+				case "red":
+					newSegment.setColor(Color.RED);
+					break;
+					
+				case "blue":
+					newSegment.setColor(Color.BLUE);
+					break;
+					
+				case "green":
+					newSegment.setColor(Color.GREEN);
+					break;
+				
+				case "yellow":	
+					newSegment.setColor(Color.YELLOW);
+					break;
+					
+				case "black":
+					newSegment.setColor(Color.BLACK);
+					break;
+			}
 			currentScribble = new NonEmptyScribble(newSegment, currentScribble);
 		} else if (chosenAction == MOVING) {
 			if (draggingScribble) {
