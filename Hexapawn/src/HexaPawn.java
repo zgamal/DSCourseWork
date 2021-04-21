@@ -58,7 +58,7 @@ public class HexaPawn {
 			p2 = new HumanPlayer(HexBoard.BLACK);
 		} else if(p2str.equals("c")){
 			p2 = new CompPlayer(HexBoard.BLACK);
-		} else { //bot
+		} else { 
 			p2 = new RandomPlayer(HexBoard.BLACK);
 		}
 		
